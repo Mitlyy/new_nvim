@@ -1,17 +1,30 @@
 return {
   {
-    "sainnhe/gruvbox-material",
+    "catppuccin/nvim",
+    name = "catppuccin", -- Рекомендуется указать имя
     lazy = false, -- Загружать сразу при старте
-    priority = 1000, -- Высокий приоритет (важно для тем)
+    priority = 1000, -- Высокий приоритет для темы
     config = function()
-      -- Настройки темы (из официальной документации плагина)
-      vim.g.gruvbox_material_background = "soft" -- 'hard'|'medium'|'soft'
-      vim.g.gruvbox_material_foreground = "material" -- 'material'|'mix'|'original'
-      vim.g.gruvbox_material_transparent_background = 0 -- 1 для прозрачного фона
-      vim.g.gruvbox_material_ui_contrast = "high" -- 'low'|'high'
+      require("catppuccin").setup {
+        flavour = "frappe", -- 'latte'|'frappe'|'macchiato'|'mocha'
+        transparent_background = false, -- true для прозрачного фона
+        term_colors = true, -- Поддержка цветов в терминале
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          treesitter = true,
+          telescope = true,
+          notify = true,
+          mini = {
+            enabled = true,
+            indentscope_color = "",
+          },
+        },
+      }
 
       -- Применение цветовой схемы
-      vim.cmd.colorscheme "gruvbox-material"
+      vim.cmd.colorscheme "catppuccin"
     end,
   },
 }
